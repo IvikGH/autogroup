@@ -1,2 +1,15 @@
 <h1>Details#index</h1>
 <p>Find me in app/views/details/index.html.erb</p>
+
+<ul class="details">
+  <% @details.each do |det| %>
+	  <li>
+	  	<%= det.brand %>
+	  	<%= det.detail_id %>
+	  	<%= det.detail_title %>
+	  	<%= det.detail_price %>
+	  	<%= det.discount_group %>
+	  	<%= det.detail_weight %>
+		</li>
+  <% end %>
+</ul>
