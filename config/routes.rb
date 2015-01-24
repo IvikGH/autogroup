@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :brands
+
   get 'details/index'
 
   get 'details/show'
