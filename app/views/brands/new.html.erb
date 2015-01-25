@@ -3,3 +3,10 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', brands_path %>
+<br>
+<hr>
+<% @brands.each do |brand| %>
+  <ul id="Blist">
+    <li><%= brand.name %></li>
+  </ul>
+<% end %>

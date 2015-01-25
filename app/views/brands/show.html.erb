@@ -6,4 +6,12 @@
 </p>
 
 <%= link_to 'Edit', edit_brand_path(@brand) %> |
-<%= link_to 'Back', brands_path %>
+<%= link_to 'Back', brands_path %> |
+<%= link_to 'New', new_brand_path %>
+<br>
+<hr>
+<% @brands.each do |brand| %>
+  <ul id="Blist">
+    <li><%= brand.name %></li>
+  </ul>
+<% end %>

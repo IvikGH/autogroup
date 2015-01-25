@@ -1,10 +1,10 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
+  before_action :get_all_brands, only: [:index, :show, :new]
 
   # GET /brands
   # GET /brands.json
   def index
-    @brands = Brand.all
   end
 
   # GET /brands/1
@@ -70,5 +70,9 @@ class BrandsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def brand_params
       params.require(:brand).permit(:name)
+    end
+
+    def get_all_brands
+      @brands = Brand.all
     end
 end
