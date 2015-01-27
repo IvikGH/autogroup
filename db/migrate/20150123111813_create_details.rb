@@ -4,7 +4,7 @@ class CreateDetails < ActiveRecord::Migration
     	t.string	:brand
     	t.string	:detail_id
     	t.string	:detail_title
-    	t.float		:detail_price, precision: 8, scale: 2
+    	t.decimal	:detail_price, precision: 8, scale: 2
     	t.string	:discount_group
     	t.float		:detail_weight, precision: 8, scale: 3
 
