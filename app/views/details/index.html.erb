@@ -4,7 +4,8 @@
 <ul class="details">
   <% @details.each do |det| %>
 	  <li>
-	  	<%= det.brand %>
+	  <!-- Detail.create(brand: Brand.find(1)) -->
+	  	<%= det.brand.name %>
 	  	<%= det.detail_id %>
 	  	<%= det.detail_title %>
 	  	<%= det.detail_price %>

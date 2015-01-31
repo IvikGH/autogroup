@@ -21,17 +21,20 @@ ActiveRecord::Schema.define(version: 20150127171120) do
   end
 
   create_table "details", force: :cascade do |t|
-    t.string   "brand"
-    t.string   "detail_id"
+    t.integer  "brand_id"
+    t.string   "detail_id",                              null: false
     t.string   "detail_title"
-    t.decimal  "detail_price",   precision: 8, scale: 2
-    t.string   "discount_group"
-    t.float    "detail_weight"
+    t.decimal  "detail_price",   precision: 8, scale: 2, null: false
+    t.string   "discount_group",                         null: false
+    t.float    "detail_weight",                          null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end
 
+  add_index "details", ["brand_id"], name: "index_details_on_brand_id", using: :btree
+
   create_table "users", force: :cascade do |t|
+    t.string   "name",                                           default: "",  null: false
     t.decimal  "margin",                 precision: 5, scale: 2, default: 3.0
     t.string   "email",                                          default: "",  null: false
     t.string   "encrypted_password",                             default: "",  null: false
