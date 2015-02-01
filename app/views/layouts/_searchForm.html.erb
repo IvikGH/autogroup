@@ -1,0 +1,7 @@
+<%= form_tag("/details/index", method: "get") do %>
+	<%= label_tag(:bName, "Choose brand name:") %>
+	<%= collection_select( :detail, :brand_id, Brand.all, :id, :name, include_blank: true ) %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
