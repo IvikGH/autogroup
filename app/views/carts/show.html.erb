@@ -1,8 +1,3 @@
-<!-- <p id="notice"><%= notice %></p>
-
-#<%= link_to 'Edit', edit_cart_path(@cart) %> |
-#<%= link_to 'Back', carts_path %> -->
-
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
@@ -12,3 +7,5 @@
         <li><%= item.quantity %> &times; <%= item.detail.detail_title %></li>
     <% end %>
 </ul>
+<%= button_to 'Empty cart', @cart, method: :delete,
+						    data: { confirm: 'Are you sure?' } %>
