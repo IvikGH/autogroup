@@ -3,14 +3,17 @@ class DetailsController < ApplicationController
   before_action :set_cart
   
   def index
-  	brandId = params[:detail][:brand_id].to_i
+  	brandId = ( params.has_key?(:details) ? params[:detail][:brand_id].to_i \
+                                          : 0 )
+    detId = ( params.has_key?(:q) ? params[:q] \
+                                          : "" )
   	if brandId != 0
   		@details = Detail.where(	"detail_id LIKE ? AND brand_id = ?",
-								  														"%#{params[:q].upcase}%", 
+								  														"%#{detId.upcase}%", 
 								  														"#{brandId}")
   	else
   		@details = Detail.where(	"detail_id LIKE ? ",
-																							"%#{params[:q].upcase}%")
+																							"%#{detId.upcase}%")
   	end
   end
 
