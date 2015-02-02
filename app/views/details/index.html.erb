@@ -1,6 +1,6 @@
 <h1>Details#index</h1>
 <p>Find me in app/views/details/index.html.erb</p>
-
+<%= render "layouts/searchForm" %>
 <ul class="details">
   <% @details.each do |det| %>
 	  <li>
@@ -12,5 +12,6 @@
 	  	<%= det.discount_group %>
 	  	<%= det.detail_weight %>
 		</li>
+		<%= button_to 'Add to Cart', line_items_path(detail_id: det) %>
   <% end %>
 </ul>
