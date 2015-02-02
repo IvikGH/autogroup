@@ -1,4 +1,7 @@
 class DetailsController < ApplicationController
+  include CurrentCart
+  before_action :set_cart
+  
   def index
   	brandId = params[:detail][:brand_id].to_i
   	if brandId != 0
