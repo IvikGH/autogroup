@@ -12,6 +12,6 @@
 	  	<%= det.discount_group %>
 	  	<%= det.detail_weight %>
 		</li>
-		<%= button_to 'Add to Cart', line_items_path(detail_id: det) %>
+		<%= button_to 'Add to Cart', line_items_path(detail_id: det), remote: true %>
   <% end %>
 </ul>
