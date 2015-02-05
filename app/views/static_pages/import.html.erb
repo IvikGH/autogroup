@@ -1,2 +1,7 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<h1>StaticPages#import</h1>
+<p>Find me in app/views/static_pages/import.html.erb</p>
+
+<%= form_tag import_details_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

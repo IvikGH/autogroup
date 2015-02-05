@@ -19,4 +19,9 @@ class DetailsController < ApplicationController
 
   def show
   end
+
+  def import
+    Detail.import(params[:file])
+    redirect_to static_pages_import_url, notice: "Data uploaded."
+  end
 end

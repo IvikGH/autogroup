@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :brands
 
   get 'details/index'
-
   get 'details/show'
 
   root 'static_pages#home'
@@ -15,7 +14,11 @@ Rails.application.routes.draw do
   get 'static_pages/contacts'
   get 'static_pages/about'
   get 'static_pages/help'
-  get 'static_pages/immport'
+  get 'static_pages/import'
+
+  resources :details do
+    collection { post :import }
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
