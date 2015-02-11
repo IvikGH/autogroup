@@ -3,17 +3,22 @@ class Detail < ActiveRecord::Base
 	has_many	:line_items
   before_destroy :ensure_not_referenced_by_any_line_item
 
-  def self.import(file)
-    # @file = file
+  def self.import_scsv(file)
+    columns = [:detail_id, :detail_title, :detail_price, :discount_group, :detail_weight]
+    data = []
     SmarterCSV.process( file.path,
-                        { :chunk_size => 2,
+                        { :chunk_size => 10000,
                           :col_sep => ";" ,
-                          :key_mapping => { :PTNRDRU => :detail_id,
-                                            :Deutsch => :detail_title,
-                                            :Euro => :detail_price,
-                                            :RABATTGRUPPE => :discount_group,
-                                            :Gewicht => :detail_weight}}) do |chunk|
-      Detail.import chunk
+                          :convert_values_to_numeric => true,
+                          :key_mapping => { :ptnrdru => :detail_id,
+                                            :deutsch => :detail_title,
+                                            :euro => :detail_price,
+                                            :rabattgruppe => :discount_group,
+                                            :gewicht => :detail_weight}}) do |chunk|
+      chunk.each do |hash|
+        data << hash.values
+      end
+      Detail.import(columns, data, validate: false)
     end  
   end
 
