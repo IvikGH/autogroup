@@ -10,12 +10,14 @@ class Detail < ActiveRecord::Base
                         { :chunk_size => 10000,
                           :col_sep => ";" ,
                           :convert_values_to_numeric => true,
+                          :remove_empty_values => false,
                           :key_mapping => { :ptnrdru => :detail_id,
                                             :deutsch => :detail_title,
                                             :euro => :detail_price,
                                             :rabattgruppe => :discount_group,
                                             :gewicht => :detail_weight}}) do |chunk|
       chunk.each do |hash|
+        hash[:detail_title] = "noname" if hash[:detail_title] == "" || hash[:detail_title].nil?
         data << hash.values
       end
       Detail.import(columns, data, validate: false)

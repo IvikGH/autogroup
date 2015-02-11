@@ -27,13 +27,13 @@ ActiveRecord::Schema.define(version: 20150202002039) do
 
   create_table "details", force: :cascade do |t|
     t.integer  "brand_id"
-    t.string   "detail_id",                              null: false
+    t.string   "detail_id",                               null: false
     t.string   "detail_title"
-    t.decimal  "detail_price",   precision: 8, scale: 2, null: false
-    t.string   "discount_group",                         null: false
-    t.float    "detail_weight",                          null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.decimal  "detail_price",   precision: 10, scale: 2, null: false
+    t.string   "discount_group",                          null: false
+    t.float    "detail_weight",                           null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "details", ["brand_id"], name: "index_details_on_brand_id", using: :btree
