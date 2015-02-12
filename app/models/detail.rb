@@ -2,6 +2,7 @@ class Detail < ActiveRecord::Base
 	belongs_to	:brand
 	has_many	:line_items
   before_destroy :ensure_not_referenced_by_any_line_item
+  acts_as_copy_target
 
   def self.import_scsv(file)
     columns = [:detail_id, :detail_title, :detail_price, :discount_group, :detail_weight]
@@ -18,23 +19,15 @@ class Detail < ActiveRecord::Base
                                             :gewicht => :detail_weight}}) do |chunk|
       chunk.each do |hash|
         hash[:detail_title] = "noname" if hash[:detail_title] == "" || hash[:detail_title].nil?
+        hash[:detail_price] = 0.00 if hash[:detail_price] == "" || hash[:detail_price].nil?
+        hash[:detail_weight] = 0.00 if hash[:detail_weight] == "" || hash[:detail_weight].nil?
         data << hash.values
       end
       Detail.import(columns, data, validate: false)
+      data = []
+      
     end  
   end
-
-  # create_table "details", force: :cascade do |t|
-  #   t.integer  "brand_id"
-  #   t.string   "detail_id",                              null: false
-  #   t.string   "detail_title"
-  #   t.decimal  "detail_price",   precision: 8, scale: 2, null: false
-  #   t.string   "discount_group",                         null: false
-  #   t.float    "detail_weight",                          null: false
-  #   t.datetime "created_at",                             null: false
-  #   t.datetime "updated_at",                             null: false
-  # end
-
 
   private
 
