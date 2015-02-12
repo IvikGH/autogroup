@@ -18,10 +18,10 @@ class Detail < ActiveRecord::Base
                                             :rabattgruppe => :discount_group,
                                             :gewicht => :detail_weight}}) do |chunk|
       chunk.each do |hash|
-        hash[:brand_id] = brandID
         hash[:detail_title] = "noname" if hash[:detail_title] == "" || hash[:detail_title].nil?
         hash[:detail_price] = 0.00 if hash[:detail_price] == "" || hash[:detail_price].nil?
         hash[:detail_weight] = 0.00 if hash[:detail_weight] == "" || hash[:detail_weight].nil?
+        hash[:brand_id] = brandID
         data << hash.values
       end
       Detail.import(columns, data, validate: false)
