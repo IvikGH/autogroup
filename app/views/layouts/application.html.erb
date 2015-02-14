@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Autogroup</title>
-<%= stylesheet_link_tag 'application', 
+<%= stylesheet_link_tag 'sass/materialize', 
 												media: 'all',
 												'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -10,19 +10,24 @@
 </head>
 <body>
 <div>
-	<% if user_signed_in? %>
-		<span>Здравствуйте, <%= current_user.email %></span>
-		<%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
-	<% else %>
-		<%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
-	<% end %>
-	<p>Devise</p>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-	<div id="cart">
-		<%= render @cart %>
+	<div>
+		<% if user_signed_in? %>
+			<span>Здравствуйте, <%= current_user.email %></span>
+			<%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
+		<% else %>
+			<%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+		<% end %>
+		<p>Devise</p>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<div id="cart">
+			<%= render @cart %>
+		</div>
+		<%= yield %>
 	</div>
+	<%= render 'layouts/nav' %>
 </div>
-<%= yield %>
+<%= javascript_include_tag 'jquery-2.1.3.min.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'js/materialize.js', 'data-turbolinks-track' => true %>
 </body>
 </html>
