@@ -10,6 +10,7 @@
 </head>
 <body>
 <div>
+	<%= render 'layouts/nav' %>
 	<div>
 		<% if user_signed_in? %>
 			<span>Здравствуйте, <%= current_user.email %></span>
@@ -25,9 +26,10 @@
 		</div>
 		<%= yield %>
 	</div>
-	<%= render 'layouts/nav' %>
 </div>
-<%= javascript_include_tag 'jquery-2.1.3.min.js', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag 'js/materialize.js', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'js/materialize.js',
+														 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'my_script.js',
+														 'data-turbolinks-track' => true %>
 </body>
 </html>

@@ -1,2 +1,4 @@
-	<%= label_tag(:bName, "Choose brand name:") %>
-	<%= collection_select( :detail, :brand_id, Brand.all, :id, :name, include_blank: true ) %>
+<div class="col s12">	
+	<%= label_tag("detail_brand_id", "Choose brand name:") %>
+	<%= collection_select( :detail, :brand_id, Brand.all, :id, :name, include_blank: true) %>
+</div>
