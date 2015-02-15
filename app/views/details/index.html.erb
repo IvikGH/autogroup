@@ -1,9 +1,10 @@
 <h1>Details#index</h1>
 <p>Find me in app/views/details/index.html.erb</p>
 <%= render "layouts/searchForm" %>
-<table  class="hoverable striped responsive-table">
+<table  class="responsive-table hoverable striped">
   <thead>
     <tr>
+      <th>+</th>
       <th>Model</th>
       <th>Detail ID</th>
       <th>Title</th>
@@ -14,19 +15,20 @@
     </tr>
   </thead>
   <tbody>
-  <% @details.each do |det| %>
-    <tr>
-	  	<td><%= det.brand.name %></td>
-	  	<td><%= det.detail_id %></td>
-	  	<td><%= det.detail_title %></td>
-	  	<td><%= det.detail_price %></td>
-	  	<td><%= det.discount_group %></td>
-	  	<td><%= det.detail_weight %></td>
-	  	<td><%= button_to 'Add to Cart',
-	  										line_items_path(detail_id: det),
-	  										remote: true %>
-	  	</td>
-    </tr>
-  <% end %>
+    <% @details.each do |det| %>
+      <tr>
+        <td><%= det.brand.name %></td>
+        <td><%= det.detail_id %></td>
+        <td><%= det.detail_title %></td>
+        <td><%= det.detail_price %></td>
+        <td><%= det.discount_group %></td>
+        <td><%= det.detail_weight %></td>
+        <td><%= link_to "",
+                        line_items_path(detail_id: det),
+                        method: :post,
+                        class: "addToCart btn-floating waves-effect waves-light red" %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
