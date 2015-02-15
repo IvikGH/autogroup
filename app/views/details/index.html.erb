@@ -1,17 +1,32 @@
 <h1>Details#index</h1>
 <p>Find me in app/views/details/index.html.erb</p>
 <%= render "layouts/searchForm" %>
-<ul class="details">
+<table  class="hoverable striped responsive-table">
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Detail ID</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Discount</th>
+      <th>Weight</th>
+      <th>Add to cart</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @details.each do |det| %>
-	  <li>
-	  <!-- Detail.create(brand: Brand.find(1)) -->
-	  	<%= det.brand.name %>
-	  	<%= det.detail_id %>
-	  	<%= det.detail_title %>
-	  	<%= det.detail_price %>
-	  	<%= det.discount_group %>
-	  	<%= det.detail_weight %>
-		</li>
-		<%= button_to 'Add to Cart', line_items_path(detail_id: det), remote: true %>
+    <tr>
+	  	<td><%= det.brand.name %></td>
+	  	<td><%= det.detail_id %></td>
+	  	<td><%= det.detail_title %></td>
+	  	<td><%= det.detail_price %></td>
+	  	<td><%= det.discount_group %></td>
+	  	<td><%= det.detail_weight %></td>
+	  	<td><%= button_to 'Add to Cart',
+	  										line_items_path(detail_id: det),
+	  										remote: true %>
+	  	</td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
