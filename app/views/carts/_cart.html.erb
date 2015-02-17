@@ -1,12 +1,14 @@
-<div class="col l4 z-depth-4">
-  <p>/app/views/carts/_cart.html.erb</p>
-  <table class="hoverable">
-    <%= render(cart.line_items) %>    
-    <tr class="total_line">
-      <td colspan="3">Total</td>
-      <td class="total_cell right-align"><%= cart.total_price %></td>
-    </tr>
-  </table>
+<div id="cart" class="row">
+  <div class="col l4 z-depth-3">
+    <p>Отобранные товары</p>
     <%= button_to 'Empty cart', cart, method: :delete,
-      data: { confirm: 'Are you sure?' } %>
+        data: { confirm: 'Are you sure?' } %>
+    <table class="hoverable">
+      <%= render(cart.line_items) %>    
+      <tr class="total_line">
+        <td colspan="3">Total</td>
+        <td class="total_cell right-align"><%= cart.total_price %></td>
+      </tr>
+    </table>
+  </div>
 </div>

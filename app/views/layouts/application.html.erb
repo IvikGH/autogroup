@@ -21,9 +21,9 @@
 		<p>Devise</p>
 		<p class="notice"><%= notice %></p>
 		<p class="alert"><%= alert %></p>
-		<div id="cart" class="row">
-			<%= render @cart %>
-		</div>
+		<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+    	<%= render @cart %>
+		<% end %>
 		<%= yield %>
 	</div>
 </div>
