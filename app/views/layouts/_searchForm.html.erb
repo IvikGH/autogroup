@@ -1,14 +1,12 @@
 <div class="row">
 	<div class="col center">
-		<div class="z-depth-3 col l8 m9 s12">
 			<%= form_tag("/details/index", method: "get") do %>
 				<%= render "layouts/selectBrand" %>
-				<div class="col s12">
+				<div>
 				  <%= label_tag(:q, "Search for:") %>
 				  <%= text_field_tag(:q) %>
 				</div>
 			  <%= submit_tag "Search", class:"btn btn-submit" %>
 			<% end %>
-		</div>
 	</div>
 </div>
