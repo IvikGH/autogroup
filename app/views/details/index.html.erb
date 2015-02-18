@@ -1,4 +1,9 @@
-<%= render "layouts/searchForm" %>
+<div id="search" class="row">
+  <div id="searchContainer" class="col l4 offset-l2 ">
+    <%= render "layouts/searchForm" %>
+  </div>
+</div>
+<div class="col l11">
 <table  class="responsive-table hoverable striped">
   <thead>
     <tr>
@@ -27,5 +32,6 @@
         </td>
       </tr>
     <% end %>
+</div>
   </tbody>
 </table>
