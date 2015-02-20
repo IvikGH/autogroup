@@ -3,18 +3,33 @@ class DetailsController < ApplicationController
   before_action :set_cart
   
   def index
-  	brandId = ( params.has_key?(:details) ? params[:detail][:brand_id].to_i \
-                                          : 0 )
-    detId = ( params.has_key?(:q) ? params[:q] \
-                                          : "" )
-  	if brandId != 0
-  		@details = Detail.where(	"detail_id LIKE ? AND brand_id = ?",
-								  														"%#{detId.upcase}%", 
-								  														"#{brandId}")
-  	else
-  		@details = Detail.where(	"detail_id LIKE ? ",
-																							"%#{detId.upcase}%")
-  	end
+    case_var = 0
+    if params.has_key?(:detail)
+      brand_id = params[:detail][:brand_id].to_i
+      case_var += 1
+    else
+      brand_id = 0
+    end
+    unless params[:q].nil?
+      det_id = params[:q]
+      case_var += 2
+    else 
+      det_id = ""
+    end
+    case case_var
+      when 1
+        @details = Detail.where(  "brand_id = ?",
+                                                "#{brand_id}")
+      when 2
+        @details = Detail.where(  "detail_id LIKE ? ",
+                                                "%#{det_id.upcase}%")
+      when 3
+        @details = Detail.where(  "detail_id LIKE ? AND brand_id = ?",
+                                                "%#{det_id.upcase}%", 
+                                                "#{brand_id}")
+      else 
+        @details = []
+    end
   end
 
   def show
