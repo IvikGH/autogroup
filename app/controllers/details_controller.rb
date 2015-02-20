@@ -4,11 +4,11 @@ class DetailsController < ApplicationController
   
   def index
     case_var = 0
-    if params.has_key?(:detail)
+    unless (  params.has_key?(:detail) && \
+              params[:detail][:brand_id].to_i > 0)
+    else
       brand_id = params[:detail][:brand_id].to_i
       case_var += 1
-    else
-      brand_id = 0
     end
     unless params[:q].nil?
       det_id = params[:q]
