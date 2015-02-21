@@ -20,8 +20,10 @@
 		<% end %>
 		<p class="notice"><%= notice %></p>
 		<p class="alert"><%= alert %></p>
-		<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-    	<%= render @cart %>
+		<% if (@card.nil?) %>
+			<%= hidden_div_if( @cart.line_items.empty?, id: 'cart') do %>
+	    	<%= render @cart %>
+			<% end %>
 		<% end %>
 		<%= yield %>
 	</div>
