@@ -4,6 +4,46 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :Имя %>
+    <%= f.text_field(:name, size: 20) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Фамилия %>
+    <%= f.text_field(:family_name, size: 50) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Отчество %>
+    <%= f.text_field(:middle_name, size: 50) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Телефон %>
+    <%= f.phone_field(:phone) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Город %>
+    <%= f.text_field(:city, size: 20) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Предпочитаемая_служба_доставки %>
+    <%= f.text_field(:default_delivery_service, size: 20) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Отделение_службы_доставки %>
+    <%= f.text_field(:default_delivery_point_address, size: 40) %>
+  </div>
+
+   <div class="field">
+    <%= f.label :Дополнительная_информация %>
+    <%= f.text_area(:default_additional_info, cols: 20, rows: 40) %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
