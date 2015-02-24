@@ -30,21 +30,23 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
 def create
+# byebug
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
     respond_to do |format|
         if @order.save
           Cart.destroy(session[:cart_id])
           session[:cart_id] = nil
-          format.html { redirect_to root_url, notice:
-            'Thank you for your order.' }
-          format.json { render action: 'show', status: :created,
-            location: @order }
+          format.html { redirect_to root_url,
+                        notice: 'Thank you for your order.' }
+          format.json { render action: 'show',
+                        status: :created,
+                        location: @order }
         else
-          @cart = current_cart
+          @cart = set_cart
           format.html { render action: 'new' }
           format.json { render json: @order.errors,
-            status: :unprocessable_entity }
+                        status: :unprocessable_entity }
         end
     end
 end
@@ -54,11 +56,13 @@ end
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order,
+                      notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.json { render json: @order.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -81,6 +85,16 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
+      params.require(:order).permit(  :name,
+                                      :address,
+                                      :email,
+                                      :pay_type,
+                                      :family_name,
+                                      :middle_name,
+                                      :phone,
+                                      :city,
+                                      :delivery_service,
+                                      :delivery_point_address,
+                                      :additional_info )
     end
 end
