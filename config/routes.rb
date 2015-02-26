@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  post 'rabats/import'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
