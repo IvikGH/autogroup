@@ -2,7 +2,8 @@
 <p>Find me in app/views/static_pages/import.html.erb</p>
 
 <%= form_tag import_details_path, multipart: true do %>
-	<%= render "layouts/selectBrand" %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
+  <%= render "layouts/importForm" %>
+<% end %>
+<%= form_tag import_rabats_path, multipart: true do %>
+  <%= render "layouts/importForm" %>
 <% end %>
