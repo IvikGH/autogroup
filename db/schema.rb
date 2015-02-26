@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225203031) do
+ActiveRecord::Schema.define(version: 20150226150929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150225203031) do
     t.float    "detail_weight",                           null: false
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.decimal  "real_price",     precision: 8,  scale: 3
   end
 
   add_index "details", ["brand_id"], name: "index_details_on_brand_id", using: :btree
