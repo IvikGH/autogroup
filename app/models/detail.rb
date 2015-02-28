@@ -5,13 +5,15 @@ class Detail < ActiveRecord::Base
   acts_as_copy_target
 
   def self.import_scsv(file, brandID)
-    columns = [:detail_id, :detail_title, :detail_price, :discount_group, :detail_weight,:brand_id, :real_price ]
+    columns = [ :detail_id, 
+                :detail_title, 
+                :detail_price, 
+                :discount_group, 
+                :detail_weight,
+                :brand_id, :real_price ]
     data = []
     current_brand_rabats = Rabat.where( brand_id: brandID ).pluck(:title, :value)
     current_brand_rabats_hash = Hash[*current_brand_rabats.flatten]
-    # current_brand_rabats.each do |hash|
-    #   rabat_hash << { hash[:title] => hash[:value] }
-    # end
 
     SmarterCSV.process( file.path,
                         { :chunk_size => 10000,
@@ -24,9 +26,12 @@ class Detail < ActiveRecord::Base
                                             :rabattgruppe => :discount_group,
                                             :gewicht => :detail_weight}}) do |chunk|
       chunk.each do |hash|
-        hash[:detail_title] = "noname" if hash[:detail_title] == "" || hash[:detail_title].nil?
-        hash[:detail_price] = 0.00 if hash[:detail_price] == "" || hash[:detail_price].nil?
-        hash[:detail_weight] = 0.00 if hash[:detail_weight] == "" || hash[:detail_weight].nil?
+        hash[:detail_title] = "noname" if 
+          hash[:detail_title] == "" || hash[:detail_title].nil?
+        hash[:detail_price] = 0.00 if 
+          hash[:detail_price] == "" || hash[:detail_price].nil?
+        hash[:detail_weight] = 0.00 if 
+          hash[:detail_weight] == "" || hash[:detail_weight].nil?
         hash[:brand_id] = brandID
         prise = BigDecimal(hash[:detail_price].to_s)
         discount_string = hash[:discount_group].to_s
