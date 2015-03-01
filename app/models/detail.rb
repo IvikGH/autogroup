@@ -10,9 +10,13 @@ class Detail < ActiveRecord::Base
                 :detail_price, 
                 :discount_group, 
                 :detail_weight,
-                :brand_id, :real_price ]
+                :brand_id, 
+                :real_price ]
     data = []
-    current_brand_rabats = Rabat.where( brand_id: brandID ).pluck(:title, :value)
+
+    Detail.where( brand_id: brandID ).destroy_all
+
+    current_brand_rabats = Rabat.where( brand_id: brandID ).pluck(:title, :value).uniq
     current_brand_rabats_hash = Hash[*current_brand_rabats.flatten]
 
     SmarterCSV.process( file.path,
@@ -35,7 +39,7 @@ class Detail < ActiveRecord::Base
         hash[:brand_id] = brandID
         prise = BigDecimal(hash[:detail_price].to_s)
         discount_string = hash[:discount_group].to_s
-        coefficient = current_brand_rabats_hash[discount_string]
+        coefficient = current_brand_rabats_hash[discount_string] || 0
         hash[:real_price] = (prise * coefficient).round(2)
         data << hash.values
       end
