@@ -6,7 +6,7 @@
       <%= render(cart.line_items) %>    
       <tr class="total_line">
         <td colspan="3">Total</td>
-        <td class="total_cell right-align"><%= cart.total_price %></td>
+        <td class="total_cell right-align"><%= cart.total_price(current_user) %></td>
       </tr>
     </table>
     <%= button_to "Checkout", new_order_path, method: :get %>

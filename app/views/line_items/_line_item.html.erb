@@ -3,5 +3,5 @@
   <td><%= line_item.quantity %> &times;</td>
   <td><%= line_item.detail.detail_id %></td>
   <td><%= line_item.detail.detail_title %></td>
-  <td class="item_price right-align"><%= line_item.total_price %></td>
+  <td class="item_price right-align"><%= line_item.total_price(current_user[:id]) %></td>
 </tr>
