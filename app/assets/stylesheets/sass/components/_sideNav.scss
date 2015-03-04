@@ -1,6 +1,6 @@
 ul.side-nav {
   position: fixed;
-  width: 120px;
+  width: 240px;
   left: -105%;
   top: 0;
   margin: 0;
@@ -50,7 +50,7 @@ ul.side-nav {
 ul.side-nav.fixed {
   a {
     display: block;
-    padding: 0;
+    padding: 0 15px;
     color: #444;
   }
 }

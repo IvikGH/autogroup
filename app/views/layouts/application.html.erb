@@ -14,35 +14,121 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="row">
-      <%= render 'layouts/nav' %>
-      <div>
-        <%= render 'layouts/devise' %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <% unless (@cart.nil?) %>
-          <%= hidden_div_if( @cart.line_items.empty?, id: 'cart') do %>
-            <%= render @cart %>
-          <% end %>
-        <% end %>
-        <%= yield %>
-      </div>
-    </div>
-  <div class="parallax-container">
-    <div class="parallax">
-      <%= image_tag("image5.jpg") %>
-    </div>
-  </div>
-  <div class="section white">
-    <div class="row container">
-      <h2 class="header">Parallax</h2>
-      <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
-    </div>
-  </div>
-  <div class="parallax-container">
-    <div class="parallax">
-      <%= image_tag("image4.jpg") %>
-    </div>
-  </div>
+        <%= render 'layouts/nav' %>
+        <div class="parallax-container">
+            <div class="section no-pad-bot">
+                <div class="row center">
+                  <div id="devise" >
+                    <%= render 'layouts/devise' %>
+                  </div>
+                  <p class="notice"><%= notice %></p>
+                  <p class="alert"><%= alert %></p>
+                  <% unless (@cart.nil?) %>
+                    <%= hidden_div_if( @cart.line_items.empty?, id: 'cart') do %>
+                      <%= render @cart %>
+                    <% end %>
+                  <% end %>
+                  <%= yield %>
+                </div>
+            </div>
+            <div class="parallax">
+              <%= image_tag("image4.jpg") %>
+            </div>
+        </div>
+        <div class="section z-depth-3 secondaryColor ">
+          <div class="section">
+
+            <!--   Icon Section   -->
+            <div class="row">
+              <div class="col s12 m4 insertion">
+                <div class="icon-block">
+                  <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
+                  <h5 class="center">Speeds up development</h5>
+
+                  <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                </div>
+              </div>
+
+              <div class="col s12 m4 insertion">
+                <div class="icon-block">
+                  <h2 class="center brown-text"><i class="mdi-social-group"></i></h2>
+                  <h5 class="center">User Experience Focused</h5>
+
+                  <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                </div>
+              </div>
+
+              <div class="col s12 m4 insertion">
+                <div class="icon-block">
+                  <h2 class="center brown-text"><i class="mdi-action-settings"></i></h2>
+                  <h5 class="center">Easy to work with</h5>
+
+                  <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="parallax-container">
+          <div class="parallax">
+            <%= image_tag("image1.jpg") %>
+          </div>
+        </div>
+<!-- ####################### -->
+
+        <div class="container">
+          <div class="section">
+
+            <!--   Icon Section   -->
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
+                  <h5 class="center">Speeds up development</h5>
+
+                  <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                </div>
+              </div>
+
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center brown-text"><i class="mdi-social-group"></i></h2>
+                  <h5 class="center">User Experience Focused</h5>
+
+                  <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                </div>
+              </div>
+
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center brown-text"><i class="mdi-action-settings"></i></h2>
+                  <h5 class="center">Easy to work with</h5>
+
+                  <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="index-banner" class="parallax-container">
+          <div class="section no-pad-bot">
+            <div class="container">
+              <br><br>
+              <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
+              <div class="row center">
+                <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+              </div>
+              <div class="row center">
+                <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+              </div>
+              <br><br>
+
+            </div>
+          </div>
+          <div class="parallax"><%= image_tag("image3.jpg") %></div>
+        </div>
+
   </body>
 </html>
