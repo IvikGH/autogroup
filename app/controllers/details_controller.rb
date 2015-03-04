@@ -1,7 +1,8 @@
 class DetailsController < ApplicationController
   include CurrentCart
   before_action :set_cart
-  
+  layout "main"
+
   def index
     case_var = 0
     unless (  params.has_key?(:detail) && \
@@ -13,7 +14,7 @@ class DetailsController < ApplicationController
     unless params[:q].nil?
       det_id = params[:q]
       case_var += 2
-    else 
+    else
       det_id = ""
     end
     case case_var
@@ -25,9 +26,9 @@ class DetailsController < ApplicationController
                                                 "%#{det_id.upcase}%")
       when 3
         @details = Detail.where(  "detail_id LIKE ? AND brand_id = ?",
-                                                "%#{det_id.upcase}%", 
+                                                "%#{det_id.upcase}%",
                                                 "#{brand_id}")
-      else 
+      else
         @details = []
     end
   end

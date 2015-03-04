@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Autogroup</title>
+		<%= stylesheet_link_tag 'sass/materialize',
+														media: 'all',
+														'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application',
+														'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="row">
+			<%= render 'layouts/nav' %>
+			<div>
+				<%= render 'layouts/devise' %>
+				<p class="notice"><%= notice %></p>
+				<p class="alert"><%= alert %></p>
+	    	<%= render @cart %>
+				<%= yield %>
+			</div>
+		</div>
+		<%= javascript_include_tag 'js/bin/materialize.js',
+																 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'js/my_script.js',
+																 'data-turbolinks-track' => true %>
+	</body>
+</html>
