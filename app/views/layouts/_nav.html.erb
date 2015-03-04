@@ -1,14 +1,22 @@
-<nav>
-	<ul id="slide-out" class="side-nav fixed right-aligned">
-    <li><%= link_to "News", '#news', class: "toNews right-align" %></li>
-    <li><%= link_to "Контакты", static_pages_contacts_path, class: "toFeedback right-align" %></li>
-    <li><%= link_to "Feedback", '#feedback', class: "toFeedback right-align" %></li>
-    <li><%= link_to "Payment", '#manual', class: "toManual right-align" %></li>
-    <li><%= link_to "Help", '#help', class: "toHelp right-align" %></li>
-    <li><%= link_to "Profile", edit_user_registration_path, class: "right-align" %></li>
-    <li><%= link_to "Импорт", static_pages_import_path, class: "right-align" %></li>
-	</ul>
-	<a href="#" data-activates="slide-out" class="button-collapse show-on-large">
-		<i class="mdi-navigation-menu"></i>
-	</a>
+<nav class="z-depth-3">
+  <%= link_to "Logo", root_path, class: "brand-logo" %>
+  <ul class="right hide-on-med-and-down">
+    <li>
+      <%= link_to "Контакти", static_pages_contacts_path, class: "toFeedback right-align" %>
+    </li>
+    <li>
+      <%= link_to "Допомога", '#help', class: "right-align" %>
+    </li>
+    <li>
+      <a class="dropdown-button" href="#!" data-activates="dropdown1">Додатково<i class="mdi-navigation-arrow-drop-down right"></i></a>
+    </li>
+    <ul id='dropdown1' class='dropdown-content'>
+      <li>
+        <%= link_to "Профiль", edit_user_registration_path, class: "right-align" %>
+      </li>
+      <li>
+        <%= link_to "Импорт", static_pages_import_path, class: "right-align" %>
+      </li>
+    </ul>
+  </ul>
 </nav>
