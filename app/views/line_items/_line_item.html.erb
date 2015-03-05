@@ -3,5 +3,8 @@
   <td><%= line_item.quantity %> &times;</td>
   <td><%= line_item.detail.detail_id %></td>
   <td><%= line_item.detail.detail_title %></td>
-  <td class="item_price right-align"><%= line_item.total_price(current_user[:id]) %></td>
+  <td class="item_price right-align">
+    <% id = ( current_user ? current_user[:id] : nil ) %>
+    <%= line_item.total_price(id) %>
+  </td>
 </tr>
