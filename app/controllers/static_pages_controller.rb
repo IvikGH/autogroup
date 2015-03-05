@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   include CurrentCart
   before_action :set_cart
-  
+
   def home
   end
 
@@ -15,5 +15,8 @@ class StaticPagesController < ApplicationController
   end
 
   def import
+    respond_to do |format|
+      format.html { render layout: "main" }
+    end
   end
 end

@@ -2,3 +2,8 @@
 	border: 3px solid red;
 	background-color: red;
 }
+#import {
+  display: block;
+  clear: both;
+  border: 2px solid red;
+}

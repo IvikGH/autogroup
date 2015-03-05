@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+#cart tr td {
+  line-height: 1; }
+  @media only screen and (min-width: 1200px) {
+    #cart tr td {
+      font-size: 12px;
+      padding: 5px; } }
+
+nav {
+    background-color: #150033;
+    color: #fff;
+}
+
+.mainColor {
+    background-color: #150033 !important;
+}
+.secondaryColor {
+    background-color: #310D42 !important;
+}
+.insertion {
+  color: #fff;
+}
+#searchForm, #devise {
+  color: #FFCE4C;
+  background-color: rgba(255,255,255,0.20);
+  font-size: 1.2rem;
+}
+#devise {
+  margin-left: 1%;
+  display: inline;
+}
+.dropdown-content {
+    background-color: rgba(92,36,69,0.90);
+}
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #FFCE4C;
+}
+.dropdown-content li:hover, .dropdown-content li.active {
+    background-color: #ab6946;
+}
+.select-wrapper input.select-dropdown {
+  color: #FFCE4C;
+}

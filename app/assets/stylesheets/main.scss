@@ -1,0 +1,87 @@
+/*
+ *= require_self
+ */
+$main:       #150033;
+$secondary:  #310D42;
+$midle:      #5C2445;
+$lighten:    #AB6946;
+$last:       #FFCE4C;
+
+@mixin whiteTransper {
+  color: #FFCE4C;
+  background-color: rgba(255,255,255,0.20);
+  font-size: 1.2rem;
+}
+
+#container, #yield {
+  background-color: rgba(255,255,255,0);
+}
+#container {
+  background-image:  url(image3.jpg);
+}
+#cart tr td {
+  line-height: 1; }
+  @media only screen and (min-width: 1200px) {
+    #cart tr td {
+      font-size: 12px;
+      padding: 5px; } }
+
+#devise, #searchContainer,#cart {
+  @include whiteTransper;
+}
+#devise {
+  margin-left: 1%;
+  display: inline;
+}
+#search {
+  margin-bottom: 0;
+}
+#searchResults {
+  background-color: #310D42;
+  thead {
+    font-weight: bold;
+    background-color: #150033;
+  }
+  tbody {
+    :hover {
+      background-color: #5C2445;
+    }
+    tr:nth-child(2n+1) {
+      background-color: #3D1052;
+    }
+    td {
+      padding: 4px 5px;
+    }
+  }
+}
+#resultTable  {
+  padding: 0;
+}
+
+#import {
+  @include whiteTransper;
+  clear: both;
+}
+
+/*
+
+nav {
+    background-color: #150033;
+    color: #fff;
+}
+
+.insertion {
+  color: #fff;
+}
+.dropdown-content {
+    background-color: rgba(92,36,69,0.90);
+}
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #FFCE4C;
+}
+.dropdown-content li:hover, .dropdown-content li.active {
+    background-color: #ab6946;
+}
+.select-wrapper input.select-dropdown {
+  color: #FFCE4C;
+}*/

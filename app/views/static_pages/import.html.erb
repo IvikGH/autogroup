@@ -1,13 +1,14 @@
-<p>Find me in app/views/static_pages/import.html.erb</p>
-<h3>Details import</h3>
-<div id="DetailsImport" class="impForm">
-  <%= form_tag import_details_path, multipart: true do %>
-    <%= render "layouts/importForm" %>
-  <% end %>
-</div>
-<h3>Rabatts import</h3>
-<div id="RabatImport" class="impForm">
-  <%= form_tag rabats_import_path, multipart: true do %>
-    <%= render "layouts/importForm" %>
-  <% end %>
+<div id="import" class="row container">
+  <h3>Завантажити прайс</h3>
+  <div id="DetailsImport" class="impForm row l8">
+    <%= form_tag import_details_path, multipart: true do %>
+      <%= render "layouts/importForm" %>
+    <% end %>
+  </div>
+  <h3>Завантажити коефiцiенти</h3>
+  <div id="RabatImport" class="impForm row l8">
+    <%= form_tag rabats_import_path, multipart: true do %>
+      <%= render "layouts/importForm" %>
+    <% end %>
+  </div>
 </div>

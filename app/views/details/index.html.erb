@@ -3,8 +3,8 @@
     <%= render "layouts/searchForm" %>
   </div>
 </div>
-<div class="col l11">
-<table  class="responsive-table hoverable striped">
+<div id="resultTable" class="col m12 l12">
+<table id="searchResults" class="responsive-table hoverable striped">
   <thead>
     <tr>
       <th>Model</th>
@@ -21,7 +21,8 @@
         <td><%= det.brand.name %></td>
         <td><%= det.detail_id %></td>
         <td><%= det.detail_title %></td>
-        <td><%= det.real_price * current_user.margin %></td>
+        <% margin = ( current_user ? current_user.margin : 3 ) %>
+        <td><%= det.real_price * margin %></td>
         <td><%= det.detail_weight %></td>
         <td><%= link_to "",
                         line_items_path(detail_id: det),

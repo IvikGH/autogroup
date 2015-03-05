@@ -5,14 +5,6 @@
       font-size: 12px;
       padding: 5px; } }
 
-$kuler2: (
-  "main":  #150033,
-  "secondary":  #310D42,
-  "midle":  #5C2445,
-  "lighten":  #AB6946,
-  "last":  #FFCE4C,
-);
-
 nav {
     background-color: #150033;
     color: #fff;
@@ -27,7 +19,7 @@ nav {
 .insertion {
   color: #fff;
 }
-#searchForm, #devise {
+#searchForm, #devise, #cart {
   color: #FFCE4C;
   background-color: rgba(255,255,255,0.20);
   font-size: 1.2rem;

@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( sass/materialize.css )
 Rails.application.config.assets.precompile += %w( js/bin/materialize.js )
 Rails.application.config.assets.precompile += %w( js/my_script.js )
+Rails.application.config.assets.precompile += %w( main.css )

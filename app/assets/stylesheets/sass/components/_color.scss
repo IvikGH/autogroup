@@ -4,6 +4,14 @@
 //
 //}
 
+$kuler2: (
+  "main":       #150033,
+  "secondary":  #310D42,
+  "midle":      #5C2445,
+  "lighten":    #AB6946,
+  "last":       #FFCE4C,
+);
+
 // Google Color Palette defined: http://www.google.com/design/spec/style/color.html
 
 
@@ -376,7 +384,7 @@ $colors: (
     @else {
       .#{$color_name}.#{$color_type} {
         background-color: $color_value !important;
-      }      
+      }
       .#{$color_name}-text.text-#{$color_type} {
         color: $color_value !important;
       }
