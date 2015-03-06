@@ -1,11 +1,11 @@
-  <div id="cart" class="col l4 z-depth-2">
+  <div id="cart" class="col l5 z-depth-2">
     <p>Отобранные товары</p>
     <%= button_to 'Empty cart', cart, method: :delete,
         data: { confirm: 'Are you sure?' } %>
     <table class="hoverable">
-      <%= render(cart.line_items) %>    
+      <%= render(cart.line_items) %>
       <tr class="total_line">
-        <td colspan="3">Total</td>
+        <td colspan="5">Total</td>
         <td class="total_cell right-align"><%= cart.total_price(current_user) %></td>
       </tr>
     </table>
