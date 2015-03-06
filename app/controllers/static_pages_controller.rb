@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
   end
 
   def contacts
+    respond_to do |format|
+      format.html { render layout: "main" }
+    end
   end
 
   def about

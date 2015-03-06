@@ -26,7 +26,7 @@ $last:       #FFCE4C;
       font-size: 12px;
       padding: 5px; } }
 
-#devise, #searchContainer,#cart {
+#devise, #searchContainer,#cart, #data {
   @include whiteTransper;
 }
 #devise {
@@ -62,7 +62,24 @@ $last:       #FFCE4C;
   @include whiteTransper;
   clear: both;
 }
-
+#data {
+  margin-left: 2%;
+  line-height: 1rem;
+  li {
+  }
+  .tabs {
+    ul {
+      /*background-color: transparent;*/
+      a {
+      font-size: 1rem;
+      /*color: $lighten;*/
+      }
+    }
+  }
+}
+.row {
+  margin-bottom: 0;
+}
 /*
 
 nav {

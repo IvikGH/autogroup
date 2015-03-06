@@ -1,7 +1,7 @@
 .tabs {
   position: relative;
   height: 48px;
-  background-color: #FFF;
+  //background-color: #FFF;
   margin: 0 auto;
   width: 100%;
   white-space: nowrap;
@@ -10,7 +10,7 @@
     display: block;
     float: left;
     text-align: center;
-    background-color: #fff;
+    background-color: rgba(255,255,255,0.25);//my rules
     line-height: 48px;
     height: 48px;
     padding: 0 20px;
@@ -37,7 +37,8 @@
     background-color: $tabs-underline-color;
     will-change: left, right;
   }
+//my rules
+
 }
 
 ul.tabs li.tab { padding: 0; }
-
