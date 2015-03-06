@@ -1,9 +1,14 @@
 (function($){
   $(function(){
 
+//materilizecss initializers section
     $('select').material_select();
-    $('.addToCart').append( "<i class=\"mdi-content-add\"></i>" );
     $('.parallax').parallax();
+    $(".dropdown-button").dropdown();
+    $('.addToCart').append( "<i class=\"mdi-content-add\"></i>" );
+    $('.collapsible').collapsible({
+      accordion : false
+    });
     // console.log("hello");
 
 // for static_pages/import.html.erb
@@ -31,14 +36,6 @@
   button2.on( 'mouseenter', function() {
     $(this).prop( "disabled", !node2.val() );
   });
-
-
-// Show sideNav
-$('.button-collapse').sideNav('show');
-// Hide sideNav
-$('.button-collapse').sideNav('hide');
-
-$(".dropdown-button").dropdown();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

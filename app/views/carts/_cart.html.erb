@@ -1,13 +1,19 @@
-  <div id="cart" class="col l5 z-depth-2">
-    <p>Отобранные товары</p>
-    <%= button_to 'Empty cart', cart, method: :delete,
-        data: { confirm: 'Are you sure?' } %>
-    <table class="hoverable">
-      <%= render(cart.line_items) %>
-      <tr class="total_line">
-        <td colspan="6">Total</td>
-        <td class="total_cell right-align"><%= cart.total_price(current_user) %></td>
-      </tr>
-    </table>
-    <%= button_to "Checkout", new_order_path, method: :get %>
-  </div>
+<div id="cart" class="col l5 z-depth-2">
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <i class="mdi-action-shopping-cart"></i>Отобранные товары <span><%= '&#8721;'.html_safe %><%= cart.total_price(current_user) %></span></div>
+      <div class="collapsible-body">
+        <%= button_to 'Empty cart', cart, method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+        <table class="hoverable">
+          <%= render(cart.line_items) %>
+          <tr class="total_line">
+            <td colspan="6">Total</td>
+            <td class="total_cell right-align"><%= cart.total_price(current_user) %></td>
+          </tr>
+        </table>
+        <%= button_to "Checkout", new_order_path, method: :get %>
+      </div>
+    </li>
+</div>
