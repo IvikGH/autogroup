@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   resources :carts
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'sessions'
+  }
+
   resources :brands
 
   get 'details/index'
