@@ -23,12 +23,14 @@ class Rabat < ActiveRecord::Base
       Rabat.import(columns, data, validate: false)
       data = []
     end
-    columns = [ :detail_id, 
-                :detail_title, 
-                :detail_price, 
-                :discount_group, 
+    columns = [ :detail_id,
+                :detail_title,
+                :detail_price,
+                :discount_group,
                 :detail_weight,
-                :brand_id, 
+                :zusatz,
+                :ersatz,
+                :brand_id,
                 :real_price ]
 
     current_brand_rabats = Rabat.where( brand_id: brandID ).pluck(:title, :value).uniq
@@ -48,6 +50,8 @@ byebug
         detail_data << detail[:detail_price]
         detail_data << detail[:discount_group]
         detail_data << detail[:detail_weight]
+        detail_data << detail[:zusatz]
+        detail_data << detail[:ersatz]
         detail_data << detail[:brand_id]
         prise = BigDecimal(detail[:detail_price].to_s)
         discount_string = detail[:discount_group].to_s

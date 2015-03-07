@@ -5,12 +5,14 @@ class Detail < ActiveRecord::Base
   acts_as_copy_target
 
   def self.import_scsv(file, brandID)
-    columns = [ :detail_id, 
-                :detail_title, 
-                :detail_price, 
-                :discount_group, 
+    columns = [ :detail_id,
+                :detail_title,
+                :detail_price,
+                :discount_group,
                 :detail_weight,
-                :brand_id, 
+                :zusatz,
+                :ersatz,
+                :brand_id,
                 :real_price ]
     data = []
 
@@ -28,14 +30,18 @@ class Detail < ActiveRecord::Base
                                             :deutsch => :detail_title,
                                             :euro => :detail_price,
                                             :rabattgruppe => :discount_group,
-                                            :gewicht => :detail_weight}}) do |chunk|
+                                            :gewicht => :detail_weight,
+                                            :Zusatz => :zusatz,
+                                            :Ersatz => :ersatz }}) do |chunk|
       chunk.each do |hash|
-        hash[:detail_title] = "noname" if 
+        hash[:detail_title] = "noname" if
           hash[:detail_title] == "" || hash[:detail_title].nil?
-        hash[:detail_price] = 0.00 if 
+        hash[:detail_price] = 0.00 if
           hash[:detail_price] == "" || hash[:detail_price].nil?
-        hash[:detail_weight] = 0.00 if 
+        hash[:detail_weight] = 0.00 if
           hash[:detail_weight] == "" || hash[:detail_weight].nil?
+        hash[:zusatz] = "" if hash[:zusatz].nil?
+        hash[:ersatz] = "" if hash[:ersatz].nil?
         hash[:brand_id] = brandID
         prise = BigDecimal(hash[:detail_price].to_s)
         discount_string = hash[:discount_group].to_s
@@ -45,7 +51,7 @@ class Detail < ActiveRecord::Base
       end
       Detail.import(columns, data, validate: false)
       data = []
-    end  
+    end
   end
 
   private
