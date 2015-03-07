@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306235252) do
+ActiveRecord::Schema.define(version: 20150307140657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "brands", force: :cascade do |t|
     t.string "name"
@@ -107,6 +108,7 @@ ActiveRecord::Schema.define(version: 20150306235252) do
     t.string   "default_delivery_service"
     t.string   "default_delivery_point_address"
     t.text     "default_additional_info"
+    t.hstore   "brands_margins"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
