@@ -14,7 +14,6 @@
       <th>Weight</th>
       <th>Zusatz</th>
       <th>Ersatz</th>
-      <th>Ersatz II</th>
       <th>Add to cart</th>
     </tr>
   </thead>
@@ -28,7 +27,6 @@
         <td><%= det.real_price * margin %></td>
         <td><%= det.detail_weight %></td>
         <td><%= det.zusatz %></td>
-        <td><%= det.ersatz %></td>
         <td><%= link_to "#{ det.ersatz }",
                         details_index_path( q: det.ersatz,
                                             detail: { brand_id: det.brand_id }),
@@ -37,6 +35,7 @@
         <td><%= link_to "",
                         line_items_path(detail_id: det),
                         method: :post,
+                        remote: true,
                         class: "addToCart btn-floating waves-effect waves-light red" %>
         </td>
       </tr>
