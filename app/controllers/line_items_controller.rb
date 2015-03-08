@@ -89,8 +89,29 @@ class LineItemsController < ApplicationController
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
-  end
+  def increment
+    @cart = set_cart
 
+    # 1st way: decrement through method in @cart
+    @line_item = @cart.increment_line_item_quantity(params[:id]) # passing in line_item.id
+
+    # 2nd way: decrement through method in @line_item
+    #@line_item = @cart.line_items.find_by_id(params[:id])
+    #@line_item = @line_item.decrement_quantity(@line_item.id)
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
+        format.js {@current_item = @line_item}
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.js {@current_item = @line_item}
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item

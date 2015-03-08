@@ -20,9 +20,14 @@ class Cart < ActiveRecord::Base
     end
     current_item
   end
+  def increment_line_item_quantity(line_item_id)
+    current_item = line_items.find(line_item_id)
+    current_item.quantity += 1
+    current_item
+  end
 
   def total_price(current_user_id)
     line_items.to_a.sum { |item| item.total_price(current_user_id) }
   end
-  
+
 end

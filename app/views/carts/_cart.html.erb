@@ -1,7 +1,7 @@
 <div id="cart" class="col l5 z-depth-2">
   <ul class="collapsible" data-collapsible="accordion">
     <li>
-      <div class="collapsible-header">
+      <div class="collapsible-header active">
         <i class="mdi-action-shopping-cart"></i>Отобранные товары <span><%= '&#8721;'.html_safe %><%= cart.total_price(current_user) %></span></div>
       <div class="collapsible-body">
         <%= button_to 'Empty cart', cart, method: :delete,
