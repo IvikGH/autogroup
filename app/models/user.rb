@@ -11,9 +11,6 @@ class User < ActiveRecord::Base
 
   def self.set_quantity(userid, quantity)
     user = User.find(userid)
-    # user.brands_margins = { quantity_to_cart: 1 }
-    # user.save
-    # value = user.brands_margins['quantity_to_cart'].next
     user.brands_margins = { quantity_to_cart: quantity }
     user.save
   end
