@@ -9,11 +9,11 @@ class User < ActiveRecord::Base
          	:validatable
   store_accessor :brands_margins, :quantity_to_cart
 
-  def self.set_quantity(userid)
+  def self.set_quantity(userid, quantity)
     user = User.find(userid)
     # user.brands_margins = { quantity_to_cart: 1 }
     # user.save
-    quantity = user.brands_margins['quantity_to_cart'].next
+    # value = user.brands_margins['quantity_to_cart'].next
     user.brands_margins = { quantity_to_cart: quantity }
     user.save
   end

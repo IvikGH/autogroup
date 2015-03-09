@@ -40,7 +40,7 @@
                         class: "addToCart btn-floating waves-effect waves-light red" %>
         </td>
         <td>
-          <input type="text" name="quantity" class="detquantity" placeholder="введiть кiлькiсть" />
+          <input type="text" name="quantity" class="detquantity" placeholder="введiть кiлькiсть" data-detail_id="<%= det.id %>"/>
         </td>
         <td><%= link_to '+',
                 quantity_to_cart_detail_path(det, user: current_user.id),
