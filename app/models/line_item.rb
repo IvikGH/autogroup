@@ -17,7 +17,7 @@ class LineItem < ActiveRecord::Base
       this_user = User.find(current_user_id)
       detail.real_price * this_user.margin
     else
-      detail.real_price * quantity * 3
+      detail.real_price * 3
     end
 	end
 

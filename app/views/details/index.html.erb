@@ -15,6 +15,7 @@
       <th>Zusatz</th>
       <th>Ersatz</th>
       <th>Add to cart</th>
+      <th>Кiлькiсть</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,13 @@
                         remote: true,
                         class: "addToCart btn-floating waves-effect waves-light red" %>
         </td>
+        <td>
+          <input type="text" name="quantity" class="detquantity" placeholder="введiть кiлькiсть" />
+        </td>
+        <td><%= link_to '+',
+                quantity_to_cart_detail_path(det, user: current_user.id),
+                method: :put,
+                class: "dq" %></td>
       </tr>
     <% end %>
 </div>

@@ -40,4 +40,12 @@ class DetailsController < ApplicationController
     Detail.import_scsv(params[:file], params[:detail][:brand_id].to_i)
     redirect_to static_pages_import_url, notice: "Data uploaded."
   end
+
+  def quantity_to_cart
+    User.set_quantity(params[:user])
+    respond_to do |format|
+      format.html { redirect_to :back }
+    end
+  end
+
 end

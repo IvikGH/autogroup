@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :details do
     collection { post :import }
+    put 'quantity_to_cart', on: :member
   end
 
   post 'rabats/import'
