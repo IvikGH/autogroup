@@ -27,8 +27,7 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     detail = Detail.find(params[:detail_id])
-    @line_item = @cart.add_detail(detail.id)
-    this_user = current_user
+    @line_item = @cart.add_detail(detail.id, current_user.id)
 
     respond_to do |format|
       if @line_item.save
@@ -89,6 +88,7 @@ class LineItemsController < ApplicationController
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
+
   def increment
     @cart = set_cart
 

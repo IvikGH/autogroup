@@ -13,9 +13,9 @@
   <td><%= line_item.detail.brand.name %></td>
   <td><%= line_item.detail.detail_id %></td>
   <td><%= line_item.detail.detail_title %></td>
-    <% id = ( current_user ? current_user[:id] : nil ) %>
+  <% id = current_user.try(:id) %>
   <td><%= line_item.user_price(id) %></td>
   <td class="item_price right-align">
-    <%= line_item.total_price(id) %>
+  <%= line_item.total_price(id) %>
   </td>
 </tr>

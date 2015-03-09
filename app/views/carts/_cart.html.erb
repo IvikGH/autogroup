@@ -2,7 +2,7 @@
   <ul class="collapsible" data-collapsible="accordion">
     <li>
       <div class="collapsible-header active">
-        <i class="mdi-action-shopping-cart"></i>Отобранные товары <span><%= '&#8721;'.html_safe %><%= cart.total_price(current_user) %></span></div>
+        <i class="mdi-action-shopping-cart"></i>Отобранные товары <span><%= '&#8721;'.html_safe %><%= cart.full_price(current_user.id) %></span></div>
       <div class="collapsible-body">
         <%= button_to 'Empty cart', cart, method: :delete,
             data: { confirm: 'Are you sure?' } %>
@@ -10,7 +10,7 @@
           <%= render(cart.line_items) %>
           <tr class="total_line">
             <td colspan="6">Total</td>
-            <td class="total_cell right-align"><%= cart.total_price(current_user) %></td>
+            <td class="total_cell right-align"><%= cart.full_price(current_user.id) %></td>
           </tr>
         </table>
         <%= button_to "Checkout", new_order_path, method: :get %>
