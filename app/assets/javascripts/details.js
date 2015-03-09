@@ -4,9 +4,7 @@
       $.ajax({
         url: '/details/' + $(this).attr('data-detail_id') + '/quantity_to_cart?user=' + $('#devise').attr('data-user_id'),
         type: 'POST',
-        data: { _method: 'PUT', quantity: $(this).val() },
-        success: function() {
-        }
+        data: { _method: 'PUT', quantity: $(this).val() }
       });
     })
   }); // end of document ready
