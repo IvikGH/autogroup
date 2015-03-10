@@ -10,6 +10,8 @@ class Cart < ActiveRecord::Base
     else
       current_item = line_items.build(detail_id: detail_id)
       current_item.quantity = details_quantity
+      user.brands_margins = { quantity_to_cart: 1 }
+      user.save
     end
     current_item
   end
