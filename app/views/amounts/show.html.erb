@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @amount.brand_id %>
+</p>
+
+<p>
+  <strong>Detaill code:</strong>
+  <%= @amount.detaill_code %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @amount.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_amount_path(@amount) %> |
+<%= link_to 'Back', amounts_path %>
