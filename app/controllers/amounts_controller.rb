@@ -1,5 +1,6 @@
 class AmountsController < ApplicationController
   before_action :set_amount, only: [:show, :edit, :update, :destroy]
+  layout "main"
 
   # GET /amounts
   # GET /amounts.json
