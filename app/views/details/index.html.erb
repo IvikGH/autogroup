@@ -42,10 +42,6 @@
         <td>
           <input type="text" name="quantity" class="detquantity" placeholder="введiть кiлькiсть" data-detail_id="<%= det.id %>"/>
         </td>
-        <td><%= link_to '+',
-                quantity_to_cart_detail_path(det, user: current_user.id),
-                method: :put,
-                class: "dq" %></td>
       </tr>
     <% end %>
 </div>
