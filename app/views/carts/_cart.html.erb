@@ -1,8 +1,9 @@
+<% this_user_id = current_user.try(:id) %>
 <div id="cart" class="col l5 z-depth-2">
   <ul class="collapsible" data-collapsible="accordion">
     <li>
       <div class="collapsible-header active">
-        <i class="mdi-action-shopping-cart"></i>Отобранные товары <span><%= '&#8721;'.html_safe %><%= cart.full_price(current_user.id) %></span></div>
+        <i class="mdi-action-shopping-cart"></i>Отобранные товары <span><%= '&#8721;'.html_safe %><%= cart.full_price(this_user_id) %></span></div>
       <div class="collapsible-body">
         <%= button_to 'Empty cart', cart, method: :delete,
             data: { confirm: 'Are you sure?' } %>
@@ -10,7 +11,7 @@
           <%= render(cart.line_items) %>
           <tr class="total_line">
             <td colspan="6">Total</td>
-            <td class="total_cell right-align"><%= cart.full_price(current_user.id) %></td>
+            <td class="total_cell right-align"><%= cart.full_price(this_user_id) %></td>
           </tr>
         </table>
         <%= button_to "Checkout", new_order_path, method: :get %>
