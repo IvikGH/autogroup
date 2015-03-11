@@ -28,6 +28,7 @@ gem 'smarter_csv', '~> 1.0.19'
 gem 'activerecord-import', '~> 0.7.0'
 gem 'postgres-copy', '~> 0.9.0'
 gem 'jquery-turbolinks', '~> 2.1.0'
+gem 'activeadmin', github: 'activeadmin'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
