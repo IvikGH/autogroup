@@ -11,8 +11,8 @@ class Cart < ActiveRecord::Base
       current_item = line_items.build(detail_id: detail_id)
       current_item.quantity = details_quantity
       user.brands_margins = { :quantity_to_cart => 1,
-                            "Bilstein" => 3,
-                            "BMW" => 3,
+                            "Bilstein" => 1.5,
+                            "BMW" => 2,
                             "Chevrolet" => 3,
                             "Chrysler" => 3,
                             "Citroen" => 3,
@@ -63,7 +63,8 @@ class Cart < ActiveRecord::Base
   end
 
   def full_price(this_user_id)
-    line_items.to_a.sum { |item| item.total_price(this_user_id) }
+    line_items.to_a.sum { |item| item.total_price( this_user_id,
+                                                   item.detail.brand.name) }
   end
 
 end

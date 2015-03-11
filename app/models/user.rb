@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   def self.set_quantity(userid, quantity)
     user = User.find(userid)
     user.brands_margins = { quantity_to_cart: quantity,
-                            "Bilstein" => 3,
-                            "BMW" => 3,
+                            "Bilstein" => 1.5,
+                            "BMW" => 2,
                             "Chevrolet" => 3,
                             "Chrysler" => 3,
                             "Citroen" => 3,

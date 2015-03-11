@@ -1,4 +1,5 @@
 <tr>
+  <% brand_name = line_item.detail.brand.name %>
   <td><%= link_to '&#8213;'.html_safe,
                   decrement_line_item_path(line_item),
                   method: :put,
@@ -10,12 +11,12 @@
                   method: :put,
                   remote: true,
                   class: "lidecr" %></td>
-  <td><%= line_item.detail.brand.name %></td>
+  <td><%= brand_name %></td>
   <td><%= line_item.detail.detail_id %></td>
   <td><%= line_item.detail.detail_title %></td>
   <% id = current_user.try(:id) %>
-  <td><%= line_item.user_price(id) %></td>
+  <td><%= line_item.user_price(id, brand_name) %></td>
   <td class="item_price right-align">
-  <%= line_item.total_price(id) %>
+  <%= line_item.total_price(id, brand_name) %>
   </td>
 </tr>

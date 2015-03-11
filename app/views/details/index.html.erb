@@ -20,11 +20,12 @@
   </thead>
   <tbody>
     <% @details.each do |det| %>
+      <% brand_name = det.brand.name %>
       <tr>
-        <td><%= det.brand.name %></td>
+        <td><%= brand_name %></td>
         <td><%= det.detail_id %></td>
         <td><%= det.detail_title %></td>
-        <% margin = ( current_user ? current_user.margin : 3 ) %>
+        <% margin = ( current_user ? current_user.brands_margins[brand_name].to_d : 3 ) %>
         <td><%= det.real_price * margin %></td>
         <td><%= det.detail_weight %></td>
         <td><%= det.zusatz %></td>
