@@ -1,8 +1,8 @@
 (function($){
   $(function(){
-    $('.detquantity').on('keyup', function() {
+    $('.detquantity').on('change', function() {
       $.ajax({
-        url: '/details/' + $(this).attr('data-detail_id') + '/quantity_to_cart?user=' + $('#devise').attr('data-user_id'),
+        url: '/details/' + $(this).attr('data-detail_id') + '/quantity_to_cart',
         type: 'POST',
         data: { _method: 'PUT', quantity: $(this).val() }
       });

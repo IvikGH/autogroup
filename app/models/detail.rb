@@ -54,6 +54,12 @@ class Detail < ActiveRecord::Base
     end
   end
 
+  def self.set_quantity(detail_id, quantity)
+    detail = Detail.find(detail_id)
+    detail.quantity_to_cart = quantity
+    detail.save
+  end
+
   private
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар

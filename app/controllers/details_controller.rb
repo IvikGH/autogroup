@@ -42,7 +42,7 @@ class DetailsController < ApplicationController
   end
 
   def quantity_to_cart
-    User.set_quantity(params[:user], params[:quantity])
+    Detail.set_quantity(params[:id], params[:quantity])
     respond_to do |format|
       format.html { redirect_to :back }
     end

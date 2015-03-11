@@ -27,7 +27,7 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     detail = Detail.find(params[:detail_id])
-    @line_item = @cart.add_detail(detail.id, current_user.id)
+    @line_item = @cart.add_detail(detail.id)
 
     respond_to do |format|
       if @line_item.save

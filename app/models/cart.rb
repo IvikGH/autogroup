@@ -1,48 +1,17 @@
 class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
 
-  def add_detail(detail_id, user_id)
+  def add_detail(detail_id)
     current_item = line_items.find_by(detail_id: detail_id)
-    user = User.find(user_id)
-    details_quantity = user.brands_margins["quantity_to_cart"].to_i
+    detail = Detail.find(detail_id)
+    details_quantity = detail.quantity_to_cart.to_i
     if current_item
       current_item.quantity += details_quantity
     else
       current_item = line_items.build(detail_id: detail_id)
       current_item.quantity = details_quantity
-      user.brands_margins = { :quantity_to_cart => 1,
-                            "Bilstein" => 1.5,
-                            "BMW" => 2,
-                            "Chevrolet" => 3,
-                            "Chrysler" => 3,
-                            "Citroen" => 3,
-                            "Fiat" => 3,
-                            "Ford" => 3,
-                            "Honda" => 3,
-                            "Hyundai" => 3,
-                            "Infiniti" => 3,
-                            "Iveco" => 3,
-                            "Jaguar" => 3,
-                            "KIA" => 3,
-                            "Land Rover" => 3,
-                            "Mazda" => 3,
-                            "Mercedes Benz" => 3,
-                            "Mitsubishi" => 3,
-                            "Nissan" => 3,
-                            "Opel" => 3,
-                            "Peugeot" => 3,
-                            "Porsche" => 3,
-                            "Renault" => 3,
-                            "Seat" => 3,
-                            "Skoda" => 3,
-                            "Subaru" => 3,
-                            "Suzuki" => 3,
-                            "Toyota" => 3,
-                            "VAG" => 3,
-                            "Volvo" => 3,
-                            "VOTEX" => 3,
-                            "ZF" => 3 }
-      user.save
+      detail.quantity_to_cart = 1
+      detail.save
     end
     current_item
   end
