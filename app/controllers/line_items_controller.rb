@@ -6,7 +6,8 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   def index
-    @line_items = LineItem.all
+    @line_items = LineItem.order("detail_id")
+    @line_items
   end
 
   # GET /line_items/1
@@ -79,13 +80,15 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to :back,
+                      notice: 'Line item was successfully updated.' }
         format.js {@current_item = @line_item}
         format.json { head :ok }
       else
         format.html { render action: "edit" }
         format.js {@current_item = @line_item}
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.json { render json:  @line_item.errors,
+                                    status: :unprocessable_entity }
       end
     end
 
@@ -101,13 +104,15 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to :bacj,
+                      notice: 'Line item was successfully updated.' }
         format.js {@current_item = @line_item}
         format.json { head :ok }
       else
         format.html { render action: "edit" }
         format.js {@current_item = @line_item}
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.json { render json: @line_item.errors,
+                                   status: :unprocessable_entity }
       end
     end
   end
@@ -115,9 +120,9 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
-# byebug
-      @line_item = LineItem.find(params[:id]).count > 1 ? @cart.line_items.find_by_id(params[:id]) : \
-        LineItem.find(params[:id])
+      @line_item = LineItem.find(params[:id]).count > 1 ? \
+                    @cart.line_items.find_by_id(params[:id]) : \
+                    LineItem.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

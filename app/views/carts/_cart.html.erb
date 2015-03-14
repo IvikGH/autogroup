@@ -8,7 +8,7 @@
         <%= button_to 'Empty cart', cart, method: :delete,
             data: { confirm: 'Are you sure?' } %>
         <table class="hoverable">
-          <%= render(cart.line_items) %>
+          <%= render(cart.line_items.order(:detail_id)) %>
           <tr class="total_line">
             <td colspan="7">Total</td>
             <td class="total_cell right-align"><%= cart.full_price(this_user_id) %></td>
