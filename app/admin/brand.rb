@@ -1,5 +1,4 @@
 ActiveAdmin.register Brand do
-  menu false
   permit_params :name
 
   # See permitted parameters documentation:
