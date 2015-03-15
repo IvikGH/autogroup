@@ -6,11 +6,11 @@
                   remote: true,
                   class: "lidecr" %></td>
   <td><%= line_item.quantity %> &times;</td>
-  <td><%= link_to '+',
+  <td><%= link_to '+'.html_safe,
                   increment_line_item_path(line_item),
                   method: :put,
                   remote: true,
-                  class: "lidecr" %></td>
+                  class: "liincr" %></td>
   <td><%= brand_name %></td>
   <td><%= line_item.detail.detail_id %></td>
   <td><%= line_item.detail.detail_title %></td>
