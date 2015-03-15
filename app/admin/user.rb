@@ -1,4 +1,21 @@
 ActiveAdmin.register User do
+
+  index do
+    column :name
+    column :middle_name
+    column :family_name
+    column :phone
+    column :city
+    column :brands_margins
+    column :default_delivery_service
+    column :default_delivery_point_address
+    column :default_additional_info
+    column :margin
+    actions
+  end
+
+
+
   permit_params :name,
                 :margin,
                 :family_name,
