@@ -8,5 +8,10 @@ class User < ActiveRecord::Base
          	:trackable,
          	:validatable
   store_accessor :brands_margins, :quantity_to_cart
+  after_create :send_notification
+
+  def send_notification
+      UserMailer.new_user(self).deliver
+  end
 
 end

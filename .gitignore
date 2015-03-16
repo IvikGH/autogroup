@@ -15,3 +15,4 @@
 #igor
 config/database.yml
 todo.txt
+config/environments/development.rb
