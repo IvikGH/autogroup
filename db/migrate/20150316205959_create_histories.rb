@@ -10,7 +10,6 @@ class CreateHistories < ActiveRecord::Migration
       t.float   :real_price, null: false
       t.integer :detail_count, null: false
       t.float   :total_price, null: false
-      t.date    :order_creation_date, null: false
 
       t.timestamps null: false
     end

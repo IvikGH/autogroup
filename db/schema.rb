@@ -89,16 +89,15 @@ ActiveRecord::Schema.define(version: 20150316205959) do
 
   create_table "histories", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "order_number",        null: false
-    t.string   "brand",               null: false
-    t.string   "detail_code",         null: false
-    t.string   "detail_title",        null: false
-    t.float    "real_price",          null: false
-    t.integer  "detail_count",        null: false
-    t.float    "total_price",         null: false
-    t.date     "order_creation_date", null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "order_number", null: false
+    t.string   "brand",        null: false
+    t.string   "detail_code",  null: false
+    t.string   "detail_title", null: false
+    t.float    "real_price",   null: false
+    t.integer  "detail_count", null: false
+    t.float    "total_price",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "histories", ["detail_code"], name: "index_histories_on_detail_code", using: :btree
