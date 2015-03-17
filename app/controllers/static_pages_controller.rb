@@ -22,4 +22,11 @@ class StaticPagesController < ApplicationController
       format.html { render layout: "main" }
     end
   end
+
+  def history
+    respond_to do |format|
+      format.html { render layout: "main" }
+    end
+  end
+
 end
