@@ -1,0 +1,29 @@
+  <p>Заказ номер № <%= @order.id %></p>
+  <p><%= @order.created_at %></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Номер детали</th>
+        <th>Название</th>
+        <th>Кол-во</th>
+        <th>Комментарии (ID)</th>
+        <th>Произв.</th>
+        <th>Наличие</th>
+        <th>Поставщик</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.histories.each do |row| %>
+        <tr>
+          <td><%= row.detail_code %></td>
+          <td><%= row.detail_title %></td>
+          <td><%= row.detail_count %></td>
+          <td><%=  %></td>
+          <td><%=  %></td>
+          <td><%=  %></td>
+          <td><%=  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

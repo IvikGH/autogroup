@@ -37,6 +37,7 @@ class OrdersController < ApplicationController
       respond_to do |format|
           if @order.save
             History.write_history(@order, current_user.id)
+            OrderMailer.new_order(@order).deliver
             Cart.destroy(session[:cart_id])
             session[:cart_id] = nil
             format.html { redirect_to root_url,
