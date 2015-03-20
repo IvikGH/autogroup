@@ -1,110 +1,115 @@
 <div class="row">
- <div id="data" class="col l7 offset-s1">
+  <div id="data" class="col l7 offset-s1">
     <h4>Edit <%= resource_name.to_s.humanize %></h4>
 
-    <%= form_for( resource,
-                  as: resource_name,
-                  url: registration_path(resource_name),
-                  html: { method: :put }) do |f| %>
-      <%= devise_error_messages! %>
+      <%= form_for( resource,
+                    as: resource_name,
+                    url: registration_path(resource_name),
+                    html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
 
-    <div class="row">
-      <div class="col s12">
-        <ul class="tabs">
-          <li class="tab col s3">
-            <a class="active" href="#tab1">Контактна iнформацiя</a>
-          </li>
-          <li class="tab col s3">
-            <a href="#tab2">Доставка</a>
-          </li>
-          <li class="tab col s3">
-            <a href="#tab3">Акаунт</a>
-          </li>
-        </ul>
-      </div>
-      <div id="tab1" class="col s12">
-        <div class="field">
-          <%= f.label :Имя %>
-          <%= f.text_field(:name, size: 20) %>
+        <div class="row">
+
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s3">
+                <a class="active" href="#tab1">Контактна iнформацiя</a>
+              </li>
+              <li class="tab col s3">
+                <a href="#tab2">Доставка</a>
+              </li>
+              <li class="tab col s3">
+                <a href="#tab3">Акаунт</a>
+              </li>
+            </ul>
+          </div>
+
+          <div id="tab1" class="col s12">
+            <div class="field">
+              <%= f.label :Имя %>
+              <%= f.text_field(:name, size: 20) %>
+            </div>
+
+            <div class="field">
+              <%= f.label :Фамилия %>
+              <%= f.text_field(:family_name, size: 50) %>
+            </div>
+
+            <div class="field">
+              <%= f.label :Отчество %>
+              <%= f.text_field(:middle_name, size: 50) %>
+            </div>
+
+            <div class="field">
+              <%= f.label :Телефон %>
+              <%= f.phone_field(:phone) %>
+            </div>
+          </div>
+
+          <div id="tab2" class="col s12">
+            <div class="field">
+              <%= f.label :Город %>
+              <%= f.text_field(:city, size: 20) %>
+            </div>
+
+            <div class="field">
+              <%= f.label :Предпочитаемая_служба_доставки %>
+              <%= f.text_field(:default_delivery_service, size: 20) %>
+            </div>
+
+            <div class="field">
+              <%= f.label :Отделение_службы_доставки %>
+              <%= f.text_field(:default_delivery_point_address, size: 40) %>
+            </div>
+
+            <div class="field">
+              <%= f.label :Дополнительная_информация %>
+              <%= f.text_area(:default_additional_info, cols: 20, rows: 40) %>
+            </div>
+          </div>
+
+          <div id="tab3" class="col s12">
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true %>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <div class="field">
+              <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+
+          </div>
         </div>
 
         <div class="field">
-          <%= f.label :Фамилия %>
-          <%= f.text_field(:family_name, size: 50) %>
+          <%= f.label :current_password %> <i>(укажите текущий пароль для сохранения изменений)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
         </div>
 
-        <div class="field">
-          <%= f.label :Отчество %>
-          <%= f.text_field(:middle_name, size: 50) %>
+        <div class="actions">
+          <%= f.submit "Update" %>
         </div>
+      <% end %>
 
-        <div class="field">
-          <%= f.label :Телефон %>
-          <%= f.phone_field(:phone) %>
-        </div>
-      </div>
-      <div id="tab2" class="col s12">
-        <div class="field">
-          <%= f.label :Город %>
-          <%= f.text_field(:city, size: 20) %>
-        </div>
+      <h5>Cancel my account</h5>
 
-        <div class="field">
-          <%= f.label :Предпочитаемая_служба_доставки %>
-          <%= f.text_field(:default_delivery_service, size: 20) %>
-        </div>
+      <p>Unhappy? <%= button_to "Cancel my account",
+                                registration_path(resource_name),
+                                data: { confirm: "Are you sure?" },
+                                method: :delete %>
+      </p>
 
-        <div class="field">
-          <%= f.label :Отделение_службы_доставки %>
-          <%= f.text_field(:default_delivery_point_address, size: 40) %>
-        </div>
+      <%= link_to "Back", :back %>
 
-        <div class="field">
-          <%= f.label :Дополнительная_информация %>
-          <%= f.text_area(:default_additional_info, cols: 20, rows: 40) %>
-        </div>
-      </div>
-      <div id="tab3" class="col s12">
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true %>
-        </div>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
-
-        <div class="field">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
-        </div>
-
-        <h5>Cancel my account</h5>
-
-        <p>Unhappy? <%= button_to "Cancel my account",
-                                  registration_path(resource_name),
-                                  data: { confirm: "Are you sure?" },
-                                  method: :delete %>
-        </p>
-      </div>
-    </div>
-
-      <div class="field">
-        <%= f.label :current_password %> <i>(укажите текущий пароль для сохранения изменений)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Update" %>
-      </div>
-    <% end %>
-
-
-    <%= link_to "Back", :back %>
- </div>
+  </div>
 </div>
