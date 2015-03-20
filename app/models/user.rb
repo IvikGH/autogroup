@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   after_create :send_notification
 
   has_many :histories
+  has_many :orders
 
   def send_notification
       UserMailer.new_user(self).deliver

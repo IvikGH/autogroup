@@ -1,5 +1,8 @@
 class Order < ActiveRecord::Base
-	has_many :line_items, dependent: :destroy
+  has_many :line_items, dependent: :destroy
+	has_many :histories
+  belongs_to :user
+
 	PAYMENT_TYPES = [ "Check", "Credit card", "Purchase order" ]
   validates :name,
             :family_name,
