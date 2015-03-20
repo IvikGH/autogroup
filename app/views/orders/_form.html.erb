@@ -1,4 +1,6 @@
 <%= form_for(@order) do |f| %>
+<% user = current_user %>
+
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -12,39 +14,39 @@
   <% end %>
   <div class="field">
     <%= f.label :Имя_получателя %>
-    <%= f.text_field(:name, size: 20) %>
+    <%= f.text_field(:name, size: 20, value: user.name) %>
   </div>
   <div class="field">
     <%= f.label :Фамилия_получателя %>
-    <%= f.text_field(:family_name, size: 50) %>
+    <%= f.text_field(:family_name, size: 50, value: user.family_name) %>
   </div>
   <div class="field">
     <%= f.label :Отчество_получателя %>
-    <%= f.text_field(:middle_name, size: 50) %>
+    <%= f.text_field(:middle_name, size: 50, value: user.middle_name) %>
   </div>
   <div class="field">
     <%= f.label :Телефон_получателя %>
-    <%= f.phone_field(:phone) %>
+    <%= f.phone_field(:phone, value: user.phone) %>
   </div>
   <div class="field">
     <%= f.label :Город %>
-    <%= f.text_field(:city, size: 20) %>
+    <%= f.text_field(:city, size: 20, value: user.city) %>
   </div>
   <div class="field">
     <%= f.label :Служба_доставки %>
-    <%= f.text_field(:delivery_service, size: 20) %>
+    <%= f.text_field(:delivery_service, size: 20, value: user.default_delivery_service) %>
   </div>
   <div class="field">
     <%= f.label :Отделение_службы_доставки %>
-    <%= f.text_field(:delivery_point_address, size: 40) %>
+    <%= f.text_field(:delivery_point_address, size: 40, value: user.default_delivery_point_address) %>
   </div>
    <div class="field">
     <%= f.label :Дополнительная_информация %>
-    <%= f.text_area(:additional_info, cols: 20, rows: 40) %>
+    <%= f.text_area(:additional_info, cols: 20, rows: 40, value: user.default_additional_info) %>
   </div>
   <!-- <div class="field">
-    <%= f.label :pay_type %><br>
-    <%= f.select  :pay_type, Order::PAYMENT_TYPES,
+    <% f.label :pay_type %><br>
+    <% f.select  :pay_type, Order::PAYMENT_TYPES,
                   prompt: 'Select a payment method' %>
   </div> -->
   <div class="actions">
