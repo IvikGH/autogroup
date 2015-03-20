@@ -1,11 +1,12 @@
 class History < ActiveRecord::Base
   belongs_to :user
+  belongs_to :order
 
   def self.write_history(order, user_id)
     order.line_items.each do |line_item|
       brand_name = line_item.detail.brand.name
       History.create( user_id: user_id,
-                      order_number: order.id,
+                      order_id: order.id,
                       brand: brand_name,
                       detail_code: line_item.detail.detail_id,
                       detail_title: line_item.detail.detail_title,

@@ -1,5 +1,32 @@
 <div id="history" class="row container">
-  <% current_user.histories.each do |row| %>
-    <p><%= row.brand %></p>
+  <% current_user.orders.each do |order| %>
+
+    <p><%= order.created_at %></p>
+
+    <table class="bordered">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Detail ID</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Sum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% order.histories.each do |row| %>
+          <tr>
+            <td><%= row.brand %></td>
+            <td><%= row.detail_code %></td>
+            <td><%= row.detail_title %></td>
+            <td><%= row.real_price %></td>
+            <td><%= row.detail_count %></td>
+            <td><%= row.total_price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
   <% end %>
 </div>
