@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150316205959) do
 
   create_table "histories", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "order_number", null: false
+    t.integer  "order_id",     null: false
     t.string   "brand",        null: false
     t.string   "detail_code",  null: false
     t.string   "detail_title", null: false
