@@ -24,7 +24,7 @@
       <%= render 'layouts/nav' %>
       <div id="container">
         <div id="upper">
-          <div id="devise" data-user_id="<%= current_user.id %>">
+          <div id="devise" data-user_id="<%= current_user.try(:id) %>">
             <%= render 'layouts/devise' %>
           </div>
           <p class="notice"><%= notice %></p>
