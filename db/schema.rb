@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320124109) do
+ActiveRecord::Schema.define(version: 20150321123237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +171,8 @@ ActiveRecord::Schema.define(version: 20150320124109) do
     t.string   "default_delivery_point_address"
     t.text     "default_additional_info"
     t.hstore   "brands_margins",                                         default: {"ZF"=>"3", "BMW"=>"3", "KIA"=>"3", "VAG"=>"3", "Fiat"=>"3", "Ford"=>"3", "Opel"=>"3", "Seat"=>"3", "Honda"=>"3", "Iveco"=>"3", "Mazda"=>"3", "Skoda"=>"3", "VOTEX"=>"3", "Volvo"=>"3", "Jaguar"=>"3", "Nissan"=>"3", "Subaru"=>"3", "Suzuki"=>"3", "Toyota"=>"3", "Citroen"=>"3", "Hyundai"=>"3", "Peugeot"=>"3", "Porsche"=>"3", "Renault"=>"3", "Bilstein"=>"3", "Chrysler"=>"3", "Infiniti"=>"3", "Chevrolet"=>"3", "Land Rover"=>"3", "Mitsubishi"=>"3", "Mercedes Benz"=>"3", "quantity_to_cart"=>"1"}
+    t.boolean  "admin",                                                  default: false
+    t.boolean  "activated",                                              default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
