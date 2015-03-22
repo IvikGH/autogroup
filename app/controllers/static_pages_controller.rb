@@ -18,14 +18,25 @@ class StaticPagesController < ApplicationController
   end
 
   def import
+    unless current_user.admin
+      render  file: "public/404.html",
+              layout: "main",
+              status: 404
+      return
+    end
+
     respond_to do |format|
       format.html { render layout: "main" }
     end
   end
 
   def history
-    render file: "public/404.html", status: 404 if current_user == nil
-    return
+    if current_user
+      render  file: "public/404.html",
+              layout: "main",
+              status: 404
+      return
+    end
 
     respond_to do |format|
       format.html { render layout: "main" }
