@@ -1,7 +1,7 @@
 // shared styles
 .btn, .btn-flat {
   display: inline-block;
-  height: $button-height;
+  height: 36px;
   margin-bottom: 15px;
   padding: 0 2rem;
   @include border-radius(2px);
