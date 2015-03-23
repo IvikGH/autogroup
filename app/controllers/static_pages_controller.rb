@@ -31,7 +31,7 @@ class StaticPagesController < ApplicationController
   end
 
   def history
-    if current_user
+    unless current_user
       render  file: "public/404.html",
               layout: "main",
               status: 404
